@@ -1,6 +1,7 @@
 ﻿<?php
 
-class Password{
+class Password
+{
 
 	private static $passInstance;
 	private $passArray;
@@ -35,6 +36,10 @@ class Password{
 		{
 			$source = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		}
+		else
+		{
+			throw new Exception('Style error!!');
+		}
 
 		$array = array();
 		for($i = 0; $i < $this->passNum ; $i++ )
@@ -53,7 +58,7 @@ class Password{
 	//クローン禁止
 	final public function __clone()
 	{
-		throw new Exception("this instance is singleton class.");
+		throw new Exception("This instance is singleton class.");
 	}
 }
 ?>
