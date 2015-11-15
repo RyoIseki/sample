@@ -22,8 +22,15 @@
 			}
 			else
 			{
-				$passMaker->setPassArray(6,6,1);
-				$passValue = $passMaker->getPass();
+				try
+				{
+					$passMaker->setPassArray(6,6,1);
+					$passValue = $passMaker->getPass();
+				}
+				catch(Exception $e)
+				{
+					die($e->getMessage());
+				}
 			}
 		?>
 		<div id="container">
@@ -52,8 +59,15 @@
 			<div id="passwordTable">
 				<form method="post" action="">
 					<?php
-						$display = new TableDisplay($passValue);
-						$display->display();
+						try
+						{
+							$display = new TableDisplay($passValue);
+							$display->display();
+						}
+						catch(Exception $e)
+						{
+							die($e->getMessage);
+						}
 					?>
 					<br/>
 					<input type="submit" name="csv" value="CVS">
