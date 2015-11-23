@@ -1,10 +1,14 @@
 ﻿<?php
 require_once('abstractTemplateMethod.php');
 
+/**
+*乱数を出力するテーブルを生成するクラス
+*template method 使用
+*/
 class TableDisplay extends AbstractDisplay
 {
 	/**
-	*header style
+	*ヘッダ表示
 	*/
 	protected function DisplayHeader()
 	{
@@ -12,10 +16,11 @@ class TableDisplay extends AbstractDisplay
 	}
 
 	/**
-	*body style
+	*テーブルボディ表示
 	*/
 	protected function DisplayBody()
 	{
+		//生成された文字列を取得
 		$passValue = $this->getData();
 
 		if(empty($passValue))
@@ -37,9 +42,8 @@ class TableDisplay extends AbstractDisplay
 			}
 		}
 	}
-
 	/**
-	*footer style
+	*フッタ表示
 	*/
 	protected function DisplayFooter()
 	{

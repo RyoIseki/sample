@@ -7,7 +7,7 @@ abstract class AbstractDisplay
 
 	/**
 	* コンストラクタ
-	* @param mixed 表示するデータ 配列として保存
+	* @param array $data 
 	*/
 	public function __construct($data)
 	{
@@ -19,7 +19,7 @@ abstract class AbstractDisplay
 	}
 
 	/**
-	* template methodに相当
+	* ヘッダ・ボディ・フッタを出力
 	*/
 	public function display()
 	{
@@ -29,7 +29,7 @@ abstract class AbstractDisplay
 	}
 
 	/**
-	* データを取得する
+	* データ取得
 	*/
 	public function getData()
 	{
@@ -38,19 +38,16 @@ abstract class AbstractDisplay
 
 	/**
 	*ヘッダ表示
-	*実装はサブクラス
 	*/
 	protected abstract function displayHeader();
 
 	/**
 	*ボディ表示
-	*実装はサブクラス
 	*/
 	protected abstract function displayBody();
 
 	/**
-	*振った表示
-	*実装はサブクラス
+	*フッタ表示
 	*/
 	protected abstract function displayFooter();
 
