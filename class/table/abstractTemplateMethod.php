@@ -7,7 +7,7 @@ abstract class AbstractDisplay
 
 	/**
 	* コンストラクタ
-	* @param array $data 
+	* @param array $data　
 	*/
 	public function __construct($data)
 	{
