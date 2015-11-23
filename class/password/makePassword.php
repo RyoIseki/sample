@@ -6,8 +6,8 @@
 class Password
 {
 	/**
-	* @param Password $passInstance
-	* @param array $passArray
+	* @param Password $passInstance Passwordクラスのインスタンス
+	* @param array $passArray 乱数
 	*/
 	private static $passInstance;
 	private $passArray;
@@ -42,7 +42,7 @@ class Password
 		}
 		else
 		{
-			throw new Exception('Style error!!');
+			throw new Exception('スタイルエラー');
 		}
 
 		$array = array();
@@ -68,7 +68,7 @@ class Password
 	*/
 	final public function __clone()
 	{
-		throw new Exception("This instance is singleton class.");
+		throw new Exception("インスタンスの複製禁止");
 	}
 }
 ?>
