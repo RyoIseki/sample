@@ -1,12 +1,16 @@
 ﻿<?php
-
+/**
+*乱数を生成するクラス
+*singleton method 使用
+*/
 class Password
 {
-
+	/**
+	* @param Password $passInstance
+	* @param array $passArray
+	*/
 	private static $passInstance;
 	private $passArray;
-	private $passNum;
-	private $passDigit;
 	
 	protected function __construct(){}
 	
@@ -18,12 +22,12 @@ class Password
 		}
 		return static::$passInstance;
 	}
-
+	
+	/**
+	*乱数を生成
+	*/
 	public function setPassArray($num,$digit,$style)
 	{
-		$this->passNum = $num;
-		$this->passDigit = $digit;
-
 		if($style == 0)
 		{
 			$source = "abcdefghijklmnopqrstuvwxyz";
@@ -42,20 +46,26 @@ class Password
 		}
 
 		$array = array();
-		for($i = 0; $i < $this->passNum ; $i++ )
+		for($i = 0; $i < $num ; $i++ )
 		{
 			$shuffledStrings = str_shuffle($source);
-			$array[] = substr($shuffledStrings,0,$this->passDigit);
+			$array[] = substr($shuffledStrings,0,$digit);
 		}
 		$this->passArray = $array;
 	}
-
+	
+	/**
+	* 乱数を返す
+	* @return array $passarray
+	*/
 	public function getPass()
 	{
 		return $this->passArray;
 	}
 	
-	//クローン禁止
+	/**
+	* クローン禁止
+	*/
 	final public function __clone()
 	{
 		throw new Exception("This instance is singleton class.");
