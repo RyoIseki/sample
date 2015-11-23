@@ -15,10 +15,18 @@
 
 		$passMaker = Password::getInstance();
 
+		//生成ボタン押下
 		if(isset($_POST['generate']))
 		{
-			$passMaker->setPassArray($_POST['number'],$_POST['digit'],$_POST['style']);
-			$passValue = $passMaker->getPass();
+			try
+			{
+				$passMaker->setPassArray($_POST['number'],$_POST['digit'],$_POST['style']);
+				$passValue = $passMaker->getPass();
+			}
+			catch(Exception $e)
+			{
+				die($e->getMessage());
+			}
 		}
 		else
 		{
@@ -57,20 +65,21 @@
 			</form>
 		</div>
 		<div id="passwordTable">
+			<?php
+				try
+				{
+					$display = new TableDisplay($passValue);
+					$display->display();
+				}
+				catch(Exception $e)
+				{
+					die($e->getMessage);
+				}
+			?>
+			<br/>
+			<a>この乱数をダウンロードする</a>
 			<form method="post" action="">
-				<?php
-					try
-					{
-						$display = new TableDisplay($passValue);
-						$display->display();
-					}
-					catch(Exception $e)
-					{
-						die($e->getMessage);
-					}
-				?>
-				<br/>
-				<input type="submit" name="csv" value="CVS">
+				<input type="submit" name="csv" value="download">
 			</form>
 		</div>
 	</div>
